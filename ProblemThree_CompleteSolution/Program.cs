@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ProblemThree_CompleteSolution_BL;
+
 namespace ProblemThree_CompleteSolution
 {
     class Program
@@ -11,29 +12,29 @@ namespace ProblemThree_CompleteSolution
         static void Main(string[] args)
         {
             //SampleCodeToTestYourclassimplementation
-            var organicpricedict = new dictionary<int, double>();
+            var organicPriceDict = new Dictionary<int, double>();
             //key 1 for first product
-            organicpricedict.add(1, 234.10);
+            organicPriceDict.Add(1, 234.10);
             //key 2 for second product
-            organicpricedict.add(2, 100.100);
-            var gosobj = new gourmetorganicshop(1, "non polished tur dal", organicpricedict);
-            var gostwoobj = new gourmetorganicshop(2, "non polished tur dal", organicpricedict);
-            int quantitytobuy = 2;
-            int quantityingrams = 200;
-            console.writeline("the total cost for {0} packets of {1} is {2}/- inr", quantitytobuy,gosobj.itemname,gosobj.payperpiece(quantitytobuy));
-            console.writeline("the total cost for {0} grams of {1} is {2}/- inr", quantityingrams, gostwoobj.itemname, gostwoobj.payperpiece(quantitytobuy));
+            organicPriceDict.Add(2, 100.100);
+            var gosObj = new GourmetOrganicShop(1, "Polished Tur Dal", organicPriceDict);
+            var gosTwoObj = new GourmetOrganicShop(2, "Non-Polished Tur Dal", organicPriceDict);
+            int quantityToBuy = 2;
+            int quantityInGrams = 200;
+            Console.WriteLine("the total cost for {0} packets of {1} is {2}/- INR", quantityToBuy, gosObj.ItemName, gosObj.PayPerPiece(quantityToBuy));
+            Console.WriteLine("the total cost for {0} grams of {1} is {2}/- INR", quantityInGrams, gosTwoObj.ItemName, gosTwoObj.PayPerWeight(quantityInGrams));
                       
-            var coffeepricedict = new dictionary<int, double>();
+            var coffeePriceDict = new Dictionary<int, double>();
             //key 1 for first product
-            coffeepricedict.add(1, 400.40);
+            coffeePriceDict.Add(1, 400.40);
             //key 2 for second product
-            coffeepricedict.add(2, 250.50);
-            var coffobj = new gourmetcoffeeshop(1, "arabica coffee powder pre-packed container", coffeepricedict);
-            var cofftwoobj = new gourmetorganicshop(2, "arabica coffee poweder", organicpricedict);
-            int quantitytobuycoffee = 2;
-            int quantityingramscoffee = 200;
-            console.writeline("the total cost for {0} packets of {1} is {2}/- inr", quantitytobuycoffee, coffobj.itemname, coffobj.payperpiece(quantitytobuy));
-            console.writeline("the total cost for {0} grams of {1} is {2}/- INR", quantityInGramsCoffee, coffTwoObj.ItemName, coffTwoObj.PayPerPiece(quantityToBuy));
+            coffeePriceDict.Add(2, 250.50);
+            var coffObj = new GourmetCoffeeShop(1, "Arabica Coffee Powder Pre-packed Container", coffeePriceDict);
+            var coffTwoObj = new GourmetCoffeeShop(2, "Arabica Coffee Powder", coffeePriceDict);
+            int quantityToBuyCoffee = 2;
+            int quantityInGramsCoffee = 200;
+            Console.WriteLine("the total cost for {0} packets of {1} is {2}/- INR", quantityToBuyCoffee, coffObj.ItemName, coffObj.PayPerPiece(quantityToBuyCoffee));
+            Console.WriteLine("the total cost for {0} grams of {1} is {2}/- INR", quantityInGramsCoffee, coffTwoObj.ItemName, coffTwoObj.PayPerWeight(quantityInGramsCoffee));
 
 
         }

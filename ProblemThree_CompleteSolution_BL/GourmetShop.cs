@@ -8,30 +8,29 @@ namespace ProblemThree_CompleteSolution_BL
 {
     public abstract class GourmetShop
     {       
-        int code;
-        string Name;
-        Dictionary<int, double> price = new Dictionary();
+        int itemCode;
+        string itemName;
 
         public GourmetShop(int iCode, string iName)
         {
-            this.code = iCode;
-            this.Name = iName;
+            itemCode = iCode;
+            itemName = iName;
         }
+
         public int ItemCode 
         { 
-            get { return code; }
-            set { this.code = value; }
+            get { return itemCode; }
+            set { itemCode = value; }
         }
+
         public string ItemName 
         { 
-            get { return name; }
-            set { this.Name = value; }
+            get { return itemName; }
+            set { itemName = value; }
         }
-        public double ItemPrice 
-        {
-            get { return price[code]; } 
-            set { price[code] = value; }
-        }
+
+        public double ItemPrice { get; set;}
+
         public abstract double PayPerPiece(int quantity);
         public abstract double PayPerWeight(int weight);
 

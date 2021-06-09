@@ -10,31 +10,54 @@ namespace ProblemThree_CompleteSolution_BL
     {
         double total, price;
 
-        public double TotalBillValue
+        public GourmetCoffeeShop(int iCode, string iName, Dictionary<int, double> iPrice)
+             : base(iCode, iName)
         {
-            get { }
-            set { }
+            price = iPrice[iCode];
         }
 
-        public GourmetCoffeeShop(int iCode, string iName, Dictionary<int, double> iPrice)
+        public double TotalBillValue
         {
-            price = iPrice[code];
+            get
+            {
+                return total;
+            }
         }
 
         public override double PayPerPiece(int quantity)
         {
-            total = quantity * price;
+            try 
+            { 
+                total = quantity * price;
+                TaxOnTotalBill();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Error type: {e.Message}");
+            }
             return (total);
         }
 
         public override double PayPerWeight(int weight)
         {
-
+            try
+            { 
+                double weightInKgs = Convert.ToDouble(weight) / 1000;
+                total = weightInKgs * price;
+                double totalAfterTax = TaxOnTotalBill();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Error type: {e.Message}");
+            }
+            return (total);
         }
 
         public double TaxOnTotalBill()
         {
-
+            double taxRate = 18; // GST rate assumend
+            total += (total * (taxRate / 100));
+            return (total);
         }
     }
 }
